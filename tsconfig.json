@@ -1,13 +1,13 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "lib": ["esnext"],
-    "target": "ES2018",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "dist",
-    "strict": true
-  },
-  "lib": ["es2015"]
+	"compilerOptions": {
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"lib": ["esnext"],
+		"target": "ES2018",
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"outDir": "dist",
+		"strict": true
+	},
+	"lib": ["es2015"]
 }

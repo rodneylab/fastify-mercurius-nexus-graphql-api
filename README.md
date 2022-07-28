@@ -1,4 +1,4 @@
-# GraphQL APi demo using fastify, mercurius and nexus 
+# GraphQL API demo using Fastify, Mercurius and Nexus 
 
 
 Work in progress

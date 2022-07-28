@@ -1,4 +1,5 @@
 {
+  "useTabs": true,
   "arrowParens": "always",
   "printWidth": 100,
   "semi": true,
