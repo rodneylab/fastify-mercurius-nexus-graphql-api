@@ -16,9 +16,7 @@ const start = async () => {
 	try {
 		await app.register(mercurius, {
 			schema,
-			context: () => {
-				return context;
-			},
+			context: () => context,
 			subscription: true,
 			graphiql: true,
 		});
