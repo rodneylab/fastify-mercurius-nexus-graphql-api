@@ -1,4 +1,4 @@
-import type { FastifyInstance } from 'fastify';
+import type { FastifyInstance, FastifyRequest } from 'fastify';
 import Fastify from 'fastify';
 import mercurius from 'mercurius';
 import { context } from './context';
@@ -12,11 +12,18 @@ app.get('/', async function (req, reply) {
 	return reply.graphql('{}');
 });
 
+const buildContext = async (req: FastifyRequest) => {
+	return Promise.resolve({
+		authorization: req.headers.authorization,
+		...context,
+	});
+};
+
 const start = async () => {
 	try {
 		await app.register(mercurius, {
 			schema,
-			context: () => context,
+			context: buildContext,
 			subscription: true,
 			graphiql: true,
 		});
