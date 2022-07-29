@@ -2,6 +2,11 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  createDraft(body: String!, title: String!): Post!
+  publish(draftId: Int!): Post!
+}
+
 type Post {
   body: String
   id: Int
@@ -12,4 +17,5 @@ type Post {
 type Query {
   drafts: [Post]!
   hello: String
+  posts: [Post]
 }

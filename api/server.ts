@@ -1,6 +1,7 @@
-import Fastify from 'fastify';
 import type { FastifyInstance } from 'fastify';
+import Fastify from 'fastify';
 import mercurius from 'mercurius';
+import { context } from './context';
 import { schema } from './schema';
 
 export const app: FastifyInstance = Fastify({
@@ -15,6 +16,9 @@ const start = async () => {
 	try {
 		await app.register(mercurius, {
 			schema,
+			context: () => {
+				return context;
+			},
 			subscription: true,
 			graphiql: true,
 		});
