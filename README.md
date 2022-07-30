@@ -34,6 +34,23 @@ query {
 
 ```graphql
 mutation {
+	createDraft(title: "Nexus", body: "...") {
+		id
+		title
+		body
+		published
+	}
+}
+```
+
+```graphql
+mutation {
+	deleteDraft(draftId: 1)
+}
+```
+
+```graphql
+mutation {
 	publish(draftId: 1) {
 		id
 		title
