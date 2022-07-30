@@ -1,6 +1,6 @@
 import { test } from 'uvu';
-import { ok, snapshot } from 'uvu/assert';
-import { createTestContext } from '../__helpers';
+import { ok, snapshot, type } from 'uvu/assert';
+import { createTestContext } from '../../testHelpers';
 
 const ctx = createTestContext();
 
@@ -20,17 +20,16 @@ test('it ensures that a draft can be created and published', async () => {
 	ok(draftResponse);
 
 	const {
-		data: draftData,
+		data: {
+			createDraft: { id, title, body, published },
+		},
 	}: { data: { createDraft: { id: number; title: string; body: string; published: boolean } } } =
 		await draftResponse.json();
+	type(id, 'number');
 	snapshot(
-		JSON.stringify(draftData),
-		'{"createDraft":{"id":1,"title":"Nexus","body":"...","published":false}}',
+		JSON.stringify({ title, body, published }),
+		'{"title":"Nexus","body":"...","published":false}',
 	);
-
-	const {
-		createDraft: { id },
-	} = draftData;
 
 	const publishQuery = `
 		mutation publishDraft($draftId: Int!) {
@@ -49,11 +48,18 @@ test('it ensures that a draft can be created and published', async () => {
 
 	const {
 		data: publishData,
-	}: { data: { createDraft: { id: number; title: string; body: string; published: boolean } } } =
+	}: { data: { publish: { id: number; title: string; body: string; published: boolean } } } =
 		await publishResponse.json();
+
 	snapshot(
 		JSON.stringify(publishData),
-		'{"publish":{"id":1,"title":"Nexus","body":"...","published":true}}',
+		`{"publish":{"id":${id},"title":"Nexus","body":"...","published":true}}`,
+	);
+
+	const persistedData = await ctx.db.post.findMany();
+	snapshot(
+		JSON.stringify(persistedData),
+		`[{"id":${id},"title":"Nexus","body":"...","published":true}]`,
 	);
 });
 

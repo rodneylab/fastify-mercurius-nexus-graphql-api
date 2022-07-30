@@ -1,4 +1,6 @@
 import { PrismaClient } from '@prisma/client';
+import { config } from 'dotenv';
+config({ path: '.env.test' });
 
 let db: PrismaClient;
 

@@ -1,6 +1,6 @@
 import { test } from 'uvu';
 import { is, ok, snapshot } from 'uvu/assert';
-import { createTestContext } from '../__helpers';
+import { createTestContext } from '../../testHelpers';
 
 const ctx = createTestContext();
 
