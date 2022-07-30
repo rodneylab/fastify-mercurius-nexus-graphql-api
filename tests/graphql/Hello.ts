@@ -9,7 +9,7 @@ test('it sends expected response to hello query', async () => {
 		query Query {
 			hello
 		}
-		`;
+	`;
 
 	const response = await ctx.request(query);
 	ok(response);

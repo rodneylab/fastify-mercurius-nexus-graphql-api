@@ -4,7 +4,7 @@ import { createTestContext } from '../__helpers';
 
 const ctx = createTestContext();
 
-test('it ensures that a draft can be createdand published', async () => {
+test('it ensures that a draft can be created and published', async () => {
 	const draftQuery = `
 		mutation {
 			createDraft(title: "Nexus", body: "...") {
