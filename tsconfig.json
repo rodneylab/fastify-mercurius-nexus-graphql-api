@@ -9,5 +9,6 @@
 		"outDir": "dist",
 		"strict": true
 	},
+	"include": ["api", "tests"],
 	"lib": ["es2015"]
 }
