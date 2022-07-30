@@ -3,6 +3,7 @@
 
 type Mutation {
 	createDraft(body: String!, title: String!): Post!
+	deleteDraft(draftId: Int!): Boolean!
 	publish(draftId: Int!): Post!
 }
 

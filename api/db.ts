@@ -1,15 +1,19 @@
-export interface Post {
-	id: number;
-	title: string;
-	body: string;
-	published: boolean;
+import { PrismaClient } from '@prisma/client';
+
+let db: PrismaClient;
+
+declare global {
+	// eslint-disable-next-line no-var
+	var __db: PrismaClient | undefined;
 }
 
-export interface Db {
-	posts: Post[];
+if (process.env.NODE_ENV === 'production') {
+	db = new PrismaClient();
+} else {
+	if (!global.__db) {
+		global.__db = new PrismaClient();
+	}
+	db = global.__db;
 }
 
-export const db: Db = {
-	// posts: [{ id: 1, title: 'Nexus', body: '...', published: false }],
-	posts: [],
-};
+export { db };

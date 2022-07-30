@@ -45,6 +45,7 @@ export interface NexusGenFieldTypes {
 	Mutation: {
 		// field return type
 		createDraft: NexusGenRootTypes['Post']; // Post!
+		deleteDraft: boolean; // Boolean!
 		publish: NexusGenRootTypes['Post']; // Post!
 	};
 	Post: {
@@ -66,6 +67,7 @@ export interface NexusGenFieldTypeNames {
 	Mutation: {
 		// field return type name
 		createDraft: 'Post';
+		deleteDraft: 'Boolean';
 		publish: 'Post';
 	};
 	Post: {
@@ -89,6 +91,10 @@ export interface NexusGenArgTypes {
 			// args
 			body: string; // String!
 			title: string; // String!
+		};
+		deleteDraft: {
+			// args
+			draftId: number; // Int!
 		};
 		publish: {
 			// args

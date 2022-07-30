@@ -17,13 +17,13 @@ export const PostQuery = extendType({
 		t.nonNull.list.field('drafts', {
 			type: 'Post',
 			resolve(_root, _args, ctx: Context) {
-				return ctx.db.posts.filter(({ published }) => !published);
+				return ctx.db.post.findMany({ where: { published: false } });
 			},
 		});
 		t.list.field('posts', {
 			type: 'Post',
 			resolve(_root, _args, ctx: Context) {
-				return ctx.db.posts.filter(({ published }) => published);
+				return ctx.db.post.findMany({ where: { published: true } });
 			},
 		});
 	},
@@ -40,14 +40,23 @@ export const PostMutation = extendType({
 			},
 			resolve(_root, args: { title: string; body: string }, ctx: Context) {
 				const { body, title } = args;
-				const draft = {
-					id: ctx.db.posts.length + 1,
+				const data = {
 					title,
 					body,
 					published: false,
 				};
-				ctx.db.posts.push(draft);
-				return draft;
+				return ctx.db.post.create({ data });
+			},
+		});
+		t.nonNull.field('deleteDraft', {
+			type: 'Boolean',
+			args: {
+				draftId: nonNull(intArg()),
+			},
+			async resolve(_root, args: { draftId: number }, ctx: Context) {
+				const { draftId: id } = args;
+				const post = await ctx.db.post.findFirst({ where: { id, published: false } });
+				return !!post;
 			},
 		});
 		t.nonNull.field('publish', {
@@ -56,16 +65,14 @@ export const PostMutation = extendType({
 				draftId: nonNull(intArg()),
 			},
 			resolve(_root, args: { draftId: number }, ctx: Context) {
-				const { draftId } = args;
-				const draftToPublish = ctx.db.posts.find(({ id }) => id === draftId);
+				const { draftId: id } = args;
 
-				if (!draftToPublish) {
-					throw new Error(`Could not find draft with id ${draftId}`);
-				}
-
-				draftToPublish.published = true;
-
-				return draftToPublish;
+				return ctx.db.post.update({
+					where: { id },
+					data: {
+						published: true,
+					},
+				});
 			},
 		});
 	},
