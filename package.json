@@ -11,6 +11,7 @@
 		"format": "prettier --write \"**/*.{graphql,js,ts,json}\"",
 		"format:check": "prettier --check --plugin-search-dir=. .",
 		"lint": "eslint . --ext .ts",
+		"prisma:generate": "prisma generate",
 		"test": "uvu -r tsm tests"
 	},
 	"keywords": [],
