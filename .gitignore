@@ -4,7 +4,8 @@ node_modules
 # dotenv environment variable files
 .env*
 .env.*
-!.env.EXAMPLE
+!.env.dev.EXAMPLE
+!.env.test.EXAMPLE
 
 # Mac files
 .DS_Store
