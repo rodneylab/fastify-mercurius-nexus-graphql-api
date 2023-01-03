@@ -11,7 +11,7 @@
 
 # fastify-mercurius-nexus-graphql
 
-Demo for Node GraphQL API server using Fastify, TypeScript, Mercurius and Nexus. The code accompanies the <a aria-label="Open Rodney Lab blog post on using Fastify Graph Q L A P I Stack" href="https://rodneylab.com/fastify-graphql-api-stack/">article on Fastify GraphQL API Stack</a>. If you have any questions, please drop a comment at the bottom of that page.
+Demo for Node GraphQL API using Fastify, TypeScript, Mercurius and Nexus. The code accompanies the <a aria-label="Open Rodney Lab blog post on using Fastify Graph Q L A P I Stack" href="https://rodneylab.com/fastify-graphql-api-stack/">article on Fastify GraphQL API Stack</a>. If you have any questions, please drop a comment at the bottom of that page.
 
 # GraphQL API demo using Fastify, Mercurius and Nexus
 
