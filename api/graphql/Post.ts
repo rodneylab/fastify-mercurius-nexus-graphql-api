@@ -55,7 +55,9 @@ export const PostMutation = extendType({
 			},
 			async resolve(_root, args: { draftId: number }, ctx: Context) {
 				const { draftId: id } = args;
-				const post = await ctx.db.post.findFirst({ where: { id, published: false } });
+				const post = await ctx.db.post.findFirst({
+					where: { id, published: false },
+				});
 				return !!post;
 			},
 		});

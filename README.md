@@ -11,19 +11,25 @@
 
 # fastify-mercurius-nexus-graphql
 
-Demo for Node GraphQL API using Fastify, TypeScript, Mercurius and Nexus. The code accompanies the <a aria-label="Open Rodney Lab blog post on using Fastify Graph Q L A P I Stack" href="https://rodneylab.com/fastify-graphql-api-stack/">article on Fastify GraphQL API Stack</a>. If you have any questions, please drop a comment at the bottom of that page.
+Demo for Node GraphQL API using Fastify, TypeScript, Mercurius and Nexus. The
+code accompanies the
+<a aria-label="Open Rodney Lab blog post on using Fastify Graph Q L A P I Stack" href="https://rodneylab.com/fastify-graphql-api-stack/">article
+on Fastify GraphQL API Stack</a>. If you have any questions, please drop a
+comment at the bottom of that page.
 
 # GraphQL API demo using Fastify, Mercurius and Nexus
 
 ## Run Development Server
 
-Copy `.env.dev.EXAMPLE` and `.env.test.EXAMPLE` to `.env.dev` and `.env.test` and update `docker-compose.yml` with your own credentials.
+Copy `.env.dev.EXAMPLE` and `.env.test.EXAMPLE` to `.env.dev` and `.env.test`
+and update `docker-compose.yml` with your own credentials.
 
 ```shell
 pnpm run dev
 ```
 
-To test a GraphQL query, navigate to [http://localhost:4000/graphiql](http://localhost:4000/graphql) in your browser.
+To test a GraphQL query, navigate to
+[http://localhost:4000/graphiql](http://localhost:4000/graphql) in your browser.
 
 ## Run Tests
 
@@ -91,4 +97,5 @@ mutation {
 }
 ```
 
-Feel free to jump into the [Rodney Lab matrix chat room](https://matrix.to/#/%23rodney:matrix.org).
+Feel free to jump into the
+[Rodney Lab matrix chat room](https://matrix.to/#/%23rodney:matrix.org).

@@ -23,8 +23,16 @@ test('it ensures that a draft can be created and published', async () => {
 		data: {
 			createDraft: { id, title, body, published },
 		},
-	}: { data: { createDraft: { id: number; title: string; body: string; published: boolean } } } =
-		await draftResponse.json();
+	}: {
+		data: {
+			createDraft: {
+				id: number;
+				title: string;
+				body: string;
+				published: boolean;
+			};
+		};
+	} = await draftResponse.json();
 	type(id, 'number');
 	snapshot(
 		JSON.stringify({ title, body, published }),
@@ -48,8 +56,11 @@ test('it ensures that a draft can be created and published', async () => {
 
 	const {
 		data: publishData,
-	}: { data: { publish: { id: number; title: string; body: string; published: boolean } } } =
-		await publishResponse.json();
+	}: {
+		data: {
+			publish: { id: number; title: string; body: string; published: boolean };
+		};
+	} = await publishResponse.json();
 
 	snapshot(
 		JSON.stringify(publishData),
