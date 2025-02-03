@@ -29,7 +29,7 @@ pnpm run dev
 ```
 
 To test a GraphQL query, navigate to
-[http://localhost:4000/graphiql](http://localhost:4000/graphql) in your browser.
+[http://localhost:4000/graphiql](http://localhost:4000/graphiql) in your browser.
 
 ## Run Tests
 

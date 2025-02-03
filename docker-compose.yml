@@ -1,7 +1,6 @@
-version: '3.8'
 services:
   postgres:
-    image: postgres:15.5
+    image: postgres:17.2@sha256:d37d2c160d34430877c802e5adc22824a2ad453499db9bab1a2ceb2be6c1a46f
     restart: always
     environment:
       POSTGRES_USER: postgres
@@ -11,15 +10,13 @@ services:
       - postgres:/var/lib/postgresql/data
     ports:
       - '5432:5432'
-
   postgres-test:
-    image: postgres:15.5
+    image: postgres:17.2@sha256:d37d2c160d34430877c802e5adc22824a2ad453499db9bab1a2ceb2be6c1a46f
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: fastify
     ports:
       - '5435:5432'
-
 volumes:
   postgres:
